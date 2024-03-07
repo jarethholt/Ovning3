@@ -1,4 +1,5 @@
 ﻿using Ovning3.Del1;
+using Ovning3.Del2;
 
 namespace Ovning3;
 
@@ -7,6 +8,7 @@ internal class Program
     static void Main(string[] args)
     {
         RunDel1();
+        RunDel2();
     }
 
     static void RunDel1()
@@ -17,6 +19,18 @@ internal class Program
         TryInvalidPersonParameters();
         CreateValidPersons();
         Console.WriteLine("-------------------------------");
+        Console.WriteLine();
+        Console.WriteLine();
+    }
+
+    static void RunDel2()
+    {
+        Console.WriteLine("Methods related to exercise 3.2");
+        Console.WriteLine("-------------------------------");
+        MakeErrorList();
+        Console.WriteLine("-------------------------------");
+        Console.WriteLine();
+        Console.WriteLine();
     }
 
     readonly record struct PersonParams(
@@ -109,9 +123,37 @@ internal class Program
         Console.WriteLine("Examples of valid parameters to Person:");
         foreach(PersonParams pars in paramsList)
         {
-            Person person = pars.CreatePerson();
-            Console.WriteLine(pars);
+            try
+            {
+                _ = pars.CreatePerson();
+                Console.WriteLine(pars);
+            }
+            catch (ArgumentException ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
         }
         Console.WriteLine();
     }
+
+    static void MakeErrorList()
+    {
+        List<UserError> errors =
+        [
+            new NumericInputError(),
+            new TextInputError(),
+        ];
+
+        Console.WriteLine("Examples of classes that inherit UserError and their UEMessage:");
+        int maxLen = errors
+            .Select(error => error.GetType().ToString().Length)
+            .Max();
+        string format = String.Format("{0}0,-{2}{1} : {0}1{1}", "{", "}", maxLen);
+        foreach(UserError error in errors)
+        {
+            Console.WriteLine(String.Format(format, error.GetType(), error.UEMessage()));
+        }
+    }
+
+
 }
