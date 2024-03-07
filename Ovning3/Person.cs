@@ -9,7 +9,7 @@ internal class Person
         set
         {
             if (value <= 0)
-                throw new ArgumentException("The age must be greater than 0");
+                throw new ArgumentException($"The age must be greater than 0; got {value}");
             age = value;
         }
     }
@@ -21,7 +21,8 @@ internal class Person
         set
         {
             if (value.Length < 2 || value.Length > 10)
-                throw new ArgumentException("The first name must be between 2 and 10 characters");
+                throw new ArgumentException(
+                    $"The first name must be between 2 and 10 characters; got {value}");
             fName = value;
         }
     }
@@ -33,7 +34,8 @@ internal class Person
         set
         {
             if (value.Length < 3 || value.Length > 15)
-                throw new ArgumentException("The last name must be between 3 and 15 characters");
+                throw new ArgumentException(
+                    $"The last name must be between 3 and 15 characters; got {value}");
             lName = value;
         }
     }
@@ -45,7 +47,7 @@ internal class Person
         set
         {
             if (value <= 0)
-                throw new ArgumentException("The height must be greater than 0");
+                throw new ArgumentException($"The height must be greater than 0; got {value}");
             height = value;
         }
     }
@@ -57,7 +59,7 @@ internal class Person
         set
         {
             if (value <= 0)
-                throw new ArgumentException("The weight must be greater than 0");
+                throw new ArgumentException($"The weight must be greater than 0; got {value}");
             weight = value;
         }
     }

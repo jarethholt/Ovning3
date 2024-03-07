@@ -6,6 +6,7 @@ internal class Program
     {
         TryGetPrivateProperties();
         TryInvalidPersonParameters();
+        CreateValidPersons();
     }
 
     readonly record struct PersonParams(
@@ -81,6 +82,26 @@ internal class Program
             }
         }
 
+        Console.WriteLine();
+    }
+
+    static void CreateValidPersons()
+    {
+        List<PersonParams> paramsList =
+        [
+            new(18, "Sam", "Smith", 160m, 70m),
+            new(50, "Atticus", "Finch", 190m, 65m),
+            new(12, "Juli", "Soona", 130m, 35m),
+            new(85, "James", "Jones", 183m, 90m),
+            new(40, "Alexia", "Nguyen", 150m, 50m)
+        ];
+
+        Console.WriteLine("Examples of valid parameters to Person:");
+        foreach(PersonParams pars in paramsList)
+        {
+            Person person = pars.CreatePerson();
+            Console.WriteLine(pars);
+        }
         Console.WriteLine();
     }
 }
