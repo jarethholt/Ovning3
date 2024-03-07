@@ -23,8 +23,8 @@ internal class Program
         };
         */
 
-        private static readonly PersonHandler handler = new();
-        public Person CreatePerson() => handler.CreatePerson(Age, FName, LName, Height, Weight);
+        public Person CreatePerson() => PersonHandler.CreatePerson(
+            Age, FName, LName, Height, Weight);
     }
 
     static void TryGetPrivateProperties()
@@ -41,8 +41,7 @@ internal class Program
         */
 
         // New construction through PersonHandler
-        PersonHandler handler = new PersonHandler();
-        Person person = handler.CreatePerson(18, "Sam", "Smith", 160m, 70m);
+        Person person = PersonHandler.CreatePerson(18, "Sam", "Smith", 160m, 70m);
 
         /*
         int age = person.age;
@@ -57,14 +56,16 @@ internal class Program
     static void TryInvalidPersonParameters()
     {
         PersonParams okayParams = new(18, "Sam", "Smith", 160m, 70m);
-        List<PersonParams> invalidParams = new();
-        invalidParams.Add(okayParams with { Age = 0 });
-        invalidParams.Add(okayParams with { FName = "A" });
-        invalidParams.Add(okayParams with { FName = "Atrociousness" });
-        invalidParams.Add(okayParams with { LName = "Ng" });
-        invalidParams.Add(okayParams with { LName = "Expialodociousness" });
-        invalidParams.Add(okayParams with { Height = 0m });
-        invalidParams.Add(okayParams with { Weight = 0m });
+        List<PersonParams> invalidParams =
+        [
+            okayParams with { Age = 0 },
+            okayParams with { FName = "A" },
+            okayParams with { FName = "Atrociousness" },
+            okayParams with { LName = "Ng" },
+            okayParams with { LName = "Expialodociousness" },
+            okayParams with { Height = 0m },
+            okayParams with { Weight = 0m },
+        ];
 
         Console.WriteLine("Examples of invalid parameters for Person:");
 
