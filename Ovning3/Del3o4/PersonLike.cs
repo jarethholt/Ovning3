@@ -28,7 +28,7 @@ internal class Wolfman(
     public override string Stats()
     {
         StringBuilder sb = new();
-        sb.AppendLine(base.Stats());
+        sb.Append(base.Stats());
         sb.AppendLine($"IsHuman: {IsHuman}");
         return sb.ToString();
     }

@@ -47,7 +47,7 @@ internal class Dog(
     public override string Stats()
     {
         StringBuilder sb = new();
-        sb.AppendLine(base.Stats());
+        sb.Append(base.Stats());
         sb.AppendLine($"CoatColor: {CoatColor}");
         sb.AppendLine($"Trained: {Trained}");
         return sb.ToString();
@@ -70,7 +70,7 @@ internal class Hedgehog(
     public override string Stats()
     {
         StringBuilder sb = new();
-        sb.AppendLine(base.Stats());
+        sb.Append(base.Stats());
         sb.AppendLine($"NumberOfSpikes: {NumberOfSpikes}");
         return sb.ToString();
     }
@@ -93,7 +93,7 @@ internal class Horse(
     public override string Stats()
     {
         StringBuilder sb = new();
-        sb.AppendLine(base.Stats());
+        sb.Append(base.Stats());
         sb.AppendLine($"ManeColor: {ManeColor}");
         sb.AppendLine($"TopSpeed: {TopSpeed}");
         return sb.ToString();
@@ -117,7 +117,7 @@ internal class Wolf(
     public override string Stats()
     {
         StringBuilder sb = new();
-        sb.AppendLine(base.Stats());
+        sb.Append(base.Stats());
         sb.AppendLine($"CoatColor: {CoatColor}");
         sb.AppendLine($"PackSize: {PackSize}");
         return sb.ToString();
@@ -140,7 +140,7 @@ internal class Worm(
     public override string Stats()
     {
         StringBuilder sb = new();
-        sb.AppendLine(base.Stats());
+        sb.Append(base.Stats());
         sb.AppendLine($"IsPoisonous: {IsPoisonous}");
         return sb.ToString();
     }
@@ -163,7 +163,7 @@ internal class Bird(
     public override string Stats()
     {
         StringBuilder sb = new();
-        sb.AppendLine(base.Stats());
+        sb.Append(base.Stats());
         sb.AppendLine($"FeatherColor: {FeatherColor}");
         sb.AppendLine($"WingSpan: {WingSpan}");
         return sb.ToString();
@@ -186,7 +186,7 @@ internal class Flamingo(
     public override string Stats()
     {
         StringBuilder sb = new();
-        sb.AppendLine(base.Stats());
+        sb.Append(base.Stats());
         sb.AppendLine($"Species: {Species}");
         return sb.ToString();
     }
@@ -208,7 +208,7 @@ internal class Pelican(
     public override string Stats()
     {
         StringBuilder sb = new();
-        sb.AppendLine(base.Stats());
+        sb.Append(base.Stats());
         sb.AppendLine($"BeakLength: {BeakLength}");
         return sb.ToString();
     }
@@ -230,7 +230,7 @@ internal class Swan(
     public override string Stats()
     {
         StringBuilder sb = new();
-        sb.AppendLine(base.Stats());
+        sb.Append(base.Stats());
         sb.AppendLine($"Aggressiveness: {Aggressiveness}");
         return sb.ToString();
     }
