@@ -1,4 +1,4 @@
-﻿namespace Ovning3.Del3;
+﻿namespace Ovning3.Del3o4;
 
 internal interface IPerson
 {

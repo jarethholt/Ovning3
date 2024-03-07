@@ -6,7 +6,7 @@
  * Svar: Då ska det vara i klassen Animal.
  */
 
-namespace Ovning3.Del3;
+namespace Ovning3.Del3o4;
 
 internal abstract class Animal(string name, decimal height, decimal weight, decimal age)
 {
