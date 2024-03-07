@@ -142,6 +142,9 @@ internal class Program
         [
             new NumericInputError(),
             new TextInputError(),
+            new EmptyStringError(),
+            new NegativeInputError(),
+            new InputTimeoutError()
         ];
 
         Console.WriteLine("Examples of classes that inherit UserError and their UEMessage:");
