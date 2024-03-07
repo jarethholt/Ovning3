@@ -1,4 +1,4 @@
-﻿namespace Ovning3;
+﻿namespace Ovning3.Del1;
 
 internal class PersonHandler
 {

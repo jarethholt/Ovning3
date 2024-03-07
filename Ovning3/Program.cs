@@ -1,12 +1,22 @@
-﻿namespace Ovning3;
+﻿using Ovning3.Del1;
+
+namespace Ovning3;
 
 internal class Program
 {
     static void Main(string[] args)
     {
+        RunDel1();
+    }
+
+    static void RunDel1()
+    {
+        Console.WriteLine("Methods related to exercise 3.1");
+        Console.WriteLine("-------------------------------");
         TryGetPrivateProperties();
         TryInvalidPersonParameters();
         CreateValidPersons();
+        Console.WriteLine("-------------------------------");
     }
 
     readonly record struct PersonParams(
