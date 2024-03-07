@@ -8,8 +8,11 @@ internal class Program
         TryInvalidPersonParameters();
     }
 
-    readonly record struct PersonParams(int Age, string FName, string LName, decimal Height, decimal Weight)
+    readonly record struct PersonParams(
+        int Age, string FName, string LName, decimal Height, decimal Weight
+    )
     {
+        /* Old initialization without PersonHandler
         public Person CreatePerson() => new()
         {
             Age = Age,
@@ -18,10 +21,15 @@ internal class Program
             Height = Height,
             Weight = Weight
         };
+        */
+
+        private static readonly PersonHandler handler = new();
+        public Person CreatePerson() => handler.CreatePerson(Age, FName, LName, Height, Weight);
     }
 
     static void TryGetPrivateProperties()
     {
+        /* Original construction of a Person instance
         Person person = new()
         {
             Age = 18,
@@ -30,6 +38,11 @@ internal class Program
             Height = 160m,
             Weight = 70m
         };
+        */
+
+        // New construction through PersonHandler
+        PersonHandler handler = new PersonHandler();
+        Person person = handler.CreatePerson(18, "Sam", "Smith", 160m, 70m);
 
         /*
         int age = person.age;
@@ -44,74 +57,22 @@ internal class Program
     static void TryInvalidPersonParameters()
     {
         PersonParams okayParams = new(18, "Sam", "Smith", 160m, 70m);
-        Person validPerson = okayParams.CreatePerson();
-
-        int[] badAges = [0];
-        string[] badFNames = ["A", "Atrociousness"];
-        string[] badLNames = ["Ng", "Expialodociousness"];
-        decimal[] badHeights = [0m];
-        decimal[] badWeights = [0m];
+        List<PersonParams> invalidParams = new();
+        invalidParams.Add(okayParams with { Age = 0 });
+        invalidParams.Add(okayParams with { FName = "A" });
+        invalidParams.Add(okayParams with { FName = "Atrociousness" });
+        invalidParams.Add(okayParams with { LName = "Ng" });
+        invalidParams.Add(okayParams with { LName = "Expialodociousness" });
+        invalidParams.Add(okayParams with { Height = 0m });
+        invalidParams.Add(okayParams with { Weight = 0m });
 
         Console.WriteLine("Examples of invalid parameters for Person:");
 
-        foreach (int age in badAges)
+        foreach (PersonParams pars in invalidParams)
         {
             try
             {
-                var invalidParams = okayParams with { Age = age };
-                Person invalidPerson = invalidParams.CreatePerson();
-            }
-            catch (ArgumentException ex)
-            {
-                Console.WriteLine(ex.Message);
-            }
-        }
-
-        foreach (string fName in badFNames)
-        {
-            try
-            {
-                var invalidParams = okayParams with { FName = fName };
-                Person invalidPerson = invalidParams.CreatePerson();
-            }
-            catch (ArgumentException ex)
-            {
-                Console.WriteLine(ex.Message);
-            }
-        }
-
-        foreach (string lName in badLNames)
-        {
-            try
-            {
-                var invalidParams = okayParams with { LName = lName };
-                Person invalidPerson = invalidParams.CreatePerson();
-            }
-            catch (ArgumentException ex)
-            {
-                Console.WriteLine(ex.Message);
-            }
-        }
-
-        foreach (decimal height in badHeights)
-        {
-            try
-            {
-                var invalidParams = okayParams with { Height = height };
-                Person invalidPerson = invalidParams.CreatePerson();
-            }
-            catch (ArgumentException ex)
-            {
-                Console.WriteLine(ex.Message);
-            }
-        }
-
-        foreach (decimal weight in badWeights)
-        {
-            try
-            {
-                var invalidParams = okayParams with { Weight = weight };
-                Person invalidPerson = invalidParams.CreatePerson();
+                Person invalidPerson = pars.CreatePerson();
             }
             catch (ArgumentException ex)
             {
