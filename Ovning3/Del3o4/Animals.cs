@@ -6,6 +6,8 @@
  * Svar: Då ska det vara i klassen Animal.
  */
 
+using System.Text;
+
 namespace Ovning3.Del3o4;
 
 internal abstract class Animal(string name, decimal height, decimal weight, decimal age)
@@ -16,6 +18,16 @@ internal abstract class Animal(string name, decimal height, decimal weight, deci
     public decimal Age { get; set; } = age;
 
     public abstract void DoSound();
+
+    public virtual string Stats()
+    {
+        StringBuilder sb = new();
+        sb.AppendLine($"Name: {Name}");
+        sb.AppendLine($"Height: {Height}");
+        sb.AppendLine($"Weight: {Weight}");
+        sb.AppendLine($"Age: {Age}");
+        return sb.ToString();
+    }
 }
 
 
@@ -31,6 +43,15 @@ internal class Dog(
     {
         Console.WriteLine("Woof");
     }
+
+    public override string Stats()
+    {
+        StringBuilder sb = new();
+        sb.AppendLine(base.Stats());
+        sb.AppendLine($"CoatColor: {CoatColor}");
+        sb.AppendLine($"Trained: {Trained}");
+        return sb.ToString();
+    }
 }
 
 
@@ -44,6 +65,14 @@ internal class Hedgehog(
     public override void DoSound()
     {
         Console.WriteLine("sniff sniff");
+    }
+
+    public override string Stats()
+    {
+        StringBuilder sb = new();
+        sb.AppendLine(base.Stats());
+        sb.AppendLine($"NumberOfSpikes: {NumberOfSpikes}");
+        return sb.ToString();
     }
 }
 
@@ -60,6 +89,15 @@ internal class Horse(
     {
         Console.WriteLine("Neeeeigh");
     }
+
+    public override string Stats()
+    {
+        StringBuilder sb = new();
+        sb.AppendLine(base.Stats());
+        sb.AppendLine($"ManeColor: {ManeColor}");
+        sb.AppendLine($"TopSpeed: {TopSpeed}");
+        return sb.ToString();
+    }
 }
 
 
@@ -75,7 +113,17 @@ internal class Wolf(
     {
         Console.WriteLine("Arooooo");
     }
+
+    public override string Stats()
+    {
+        StringBuilder sb = new();
+        sb.AppendLine(base.Stats());
+        sb.AppendLine($"CoatColor: {CoatColor}");
+        sb.AppendLine($"PackSize: {PackSize}");
+        return sb.ToString();
+    }
 }
+
 
 internal class Worm(
     string name, decimal height, decimal weight, decimal age,
@@ -87,6 +135,14 @@ internal class Worm(
     public override void DoSound()
     {
         Console.WriteLine("...");
+    }
+
+    public override string Stats()
+    {
+        StringBuilder sb = new();
+        sb.AppendLine(base.Stats());
+        sb.AppendLine($"IsPoisonous: {IsPoisonous}");
+        return sb.ToString();
     }
 }
 
@@ -103,6 +159,15 @@ internal class Bird(
     {
         Console.WriteLine("Peeep");
     }
+
+    public override string Stats()
+    {
+        StringBuilder sb = new();
+        sb.AppendLine(base.Stats());
+        sb.AppendLine($"FeatherColor: {FeatherColor}");
+        sb.AppendLine($"WingSpan: {WingSpan}");
+        return sb.ToString();
+    }
 }
 
 
@@ -115,7 +180,15 @@ internal class Flamingo(
 
     public override void DoSound()
     {
-        Console.WriteLine("Honk");
+        Console.WriteLine("Squonk");
+    }
+
+    public override string Stats()
+    {
+        StringBuilder sb = new();
+        sb.AppendLine(base.Stats());
+        sb.AppendLine($"Species: {Species}");
+        return sb.ToString();
     }
 }
 
@@ -131,6 +204,14 @@ internal class Pelican(
     {
         Console.WriteLine("Hrrraw");
     }
+
+    public override string Stats()
+    {
+        StringBuilder sb = new();
+        sb.AppendLine(base.Stats());
+        sb.AppendLine($"BeakLength: {BeakLength}");
+        return sb.ToString();
+    }
 }
 
 
@@ -144,5 +225,13 @@ internal class Swan(
     public override void DoSound()
     {
         Console.WriteLine("Honk");
+    }
+
+    public override string Stats()
+    {
+        StringBuilder sb = new();
+        sb.AppendLine(base.Stats());
+        sb.AppendLine($"Aggressiveness: {Aggressiveness}");
+        return sb.ToString();
     }
 }
