@@ -52,6 +52,9 @@ internal class Dog(
         sb.AppendLine($"Trained: {Trained}");
         return sb.ToString();
     }
+
+    public void RollOver()
+        => Console.WriteLine($"{Name} rolled over. Good dog!");
 }
 
 
