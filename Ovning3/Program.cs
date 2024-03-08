@@ -9,18 +9,8 @@ internal class Program
     static void Main(string[] args)
     {
         Del1.Program.RunDel1();
-        RunDel2();
+        Del2.Program.RunDel2();
         RunDel3o4();
-    }
-
-    static void RunDel2()
-    {
-        Console.WriteLine("Methods related to exercise 3.2");
-        Console.WriteLine("-------------------------------");
-        MakeErrorList();
-        Console.WriteLine("-------------------------------");
-        Console.WriteLine();
-        Console.WriteLine();
     }
 
     static void RunDel3o4()
@@ -31,28 +21,6 @@ internal class Program
         Console.WriteLine("----------------------------------------");
         Console.WriteLine();
         Console.WriteLine();
-    }
-
-    static void MakeErrorList()
-    {
-        List<UserError> errors =
-        [
-            new NumericInputError(),
-            new TextInputError(),
-            new EmptyStringError(),
-            new NegativeInputError(),
-            new InputTimeoutError()
-        ];
-
-        Console.WriteLine("Examples of classes that inherit UserError and their UEMessage:");
-        int maxLen = errors
-            .Select(error => error.GetType().ToString().Length)
-            .Max();
-        string format = String.Format("{0}0,-{2}{1} : {0}1{1}", "{", "}", maxLen);
-        foreach(UserError error in errors)
-        {
-            Console.WriteLine(String.Format(format, error.GetType(), error.UEMessage()));
-        }
     }
 
     static void MakeAnimalList()
